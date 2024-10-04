@@ -1,0 +1,6 @@
+chainlink-v2.7.2/=lib/chainlink-v2.7.2/contracts/
+ds-test/=lib/forge-std/lib/ds-test/src/
+forge-deploy/=lib/forge-deploy/src/
+forge-std/=lib/forge-std/src/
+openzeppelin-contracts-upgradeable-v4.9.5/=lib/openzeppelin-contracts-upgradeable-v4.9.5/
+openzeppelin-contracts-v4.9.5/=lib/openzeppelin-contracts-v4.9.5/

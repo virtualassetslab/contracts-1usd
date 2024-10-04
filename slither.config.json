@@ -1,0 +1,7 @@
+{
+  "detectors_to_exclude": "naming-convention",
+  "exclude_dependencies": true,
+  "exclude_informational": true,
+  "exclude_low": true,
+  "filter_paths": "test"
+}

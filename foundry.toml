@@ -1,0 +1,28 @@
+[profile.default]
+
+[profile.script]
+fs_permissions = [
+    {access = "read-write", path = "./deployments-mainnet.json"},
+    {access = "read", path = "./out"},
+    {access = "read", path = "./script/configs"},
+]
+
+[profile.test]
+fs_permissions = [
+    {access = "read", path = "./deployments-mainnet.json"},
+    {access = "read", path = "./out"},
+    {access = "read", path = "./script/configs"},
+]
+
+[profile.0_8_19_opt_20000]
+src = "src_0_8_19_opt_20000"
+script = "script_0_8_19_opt_20000"
+test = "test_0_8_19_opt_20000"
+solc = "0.8.19"
+optimizer = true
+optimizer_runs = 20000
+
+[rpc_endpoints]
+mainnet = "https://mainnet.infura.io/v3/${INFURA_API_KEY}"
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options

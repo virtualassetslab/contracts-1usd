@@ -1,0 +1,26 @@
+{
+  "name": "contracts-1usd",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "forge build && pnpm build:base",
+    "build:base": "FOUNDRY_PROFILE=0_8_19_opt_20000 forge build",
+    "clean": "forge clean",
+    "script:deploy": "FOUNDRY_PROFILE=script forge script --sig \"run(string memory)\" script/01_Deployments.s.sol",
+    "script:verify": "FOUNDRY_PROFILE=script forge script --ffi --sig \"run(string memory)\" script/02_Verification.s.sol",
+    "script:initializeAndConfigure": "FOUNDRY_PROFILE=script forge script --sig \"run(string memory, string memory)\" script/04_InitializeAndConfigure.s.sol",
+    "lint": "prettier --list-different --plugin=prettier-plugin-solidity '{src*,test*}/**/*.sol' && pnpm solhint 'src*/**/*.sol'",
+    "lint:fix": "prettier --write --plugin=prettier-plugin-solidity '{src*,test*}/**/*.sol' && pnpm solhint --fix 'src*/**/*.sol'",
+    "test": "pnpm test:deploy",
+    "test:deploy": "FOUNDRY_PROFILE=test forge test -vv",
+    "slither": "slither ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.8.8",
+    "prettier-plugin-solidity": "^1.2.0",
+    "solhint": "^4.0.0"
+  }
+}
