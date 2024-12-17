@@ -1,0 +1,45 @@
+{
+  "name": "OneUSD Stablecoin",
+  "symbol": "1USD",
+  "deployment-name": "1USD_Stablecoin",
+  "pools": [
+    {
+      "limit": 500000,
+      "threshold": 200000,
+      "signatures": 0
+    },
+    {
+      "limit": 2000000,
+      "threshold": 500000,
+      "signatures": 1
+    },
+    {
+      "limit": 50000000,
+      "threshold": 50000000,
+      "signatures": 2
+    }
+  ],
+  "roles": {
+    "admin": [
+      "0x5BafE071663F6E175F0b7424251aB46437Ba6abd"
+    ],
+    "minter": [
+      "0xc9e8dd03F8288aBaf1EE4AB18646A7e42dd64Ce7"
+    ],
+    "mint_ratifier": [
+      "0x0D55E17ca63ffF2715859528EddC54D0A7E91248",
+      "0x80bA50157eEa3d33E179E7C50C1f3D59484B1790",
+      "0x083B59F244f8BAcbc79282Cdd623686324C962AC",
+      "0x960b1d99A841399fB226715d9eF8cCAfb9996bC8",
+      "0xFbF329794a64Bf940f7B3bdaFf4F2157ba23B3CC",
+      "0x937c8C2d78fd98E6C5488519B05a797ae1b9Eb40",
+      "0x330Aaf998c9D2Fe97D1ab86Da724daF2F4d032E7"
+    ],
+    "redemption_admin": [
+      "0xE77747B356CD9Dbe6E465974919d6B91ff5ACCd2"
+    ],
+    "pauser": [
+      "0x69ee6870571D71Af0eE26D8B0d4DdD6261fa8232"
+    ]
+  }
+}
