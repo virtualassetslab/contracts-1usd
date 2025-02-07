@@ -2,6 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Script} from "forge-std/Script.sol";
+
 import {Deployments} from "forge-deploy/library/Deployments.sol";
 import {IStablecoin} from "./interfaces/IStablecoin.sol";
 
@@ -26,7 +27,7 @@ contract InitializeAndConfigureScript is Script {
         bytes memory data = abi.encodeWithSelector(IStablecoin.initialize.selector, name, symbol);
         bytes memory args = abi.encode(implementation, data);
 
-        proxy = _getOrDeployWithArgs(deploymentName, "ProxyWrapper.sol:ProxyWrapper", "0_8_19_opt_20000", args);
+        proxy = _getOrDeployWithArgs(deploymentName, "ProxyWrapper", "0_8_19_opt_20000", args);
 
         vm.startBroadcast();
 
@@ -59,11 +60,11 @@ contract InitializeAndConfigureScript is Script {
         return enumerableDeployments.get(key).address_;
     }
 
-    function _getOrDeployWithArgs(string memory key, string memory artifactPath, string memory foundryProfile, bytes memory args)
+    function _getOrDeployWithArgs(string memory key, string memory contractName, string memory foundryProfile, bytes memory args)
     private
     returns (address)
     {
-        return enumerableDeployments.getOrDeployWithArgs(key, artifactPath, foundryProfile, args).address_;
+        return enumerableDeployments.getOrDeployWithArgs(key, contractName, foundryProfile, args).address_;
     }
 
     function _configFile(string memory network, string memory name) private view returns (string memory) {

@@ -8,11 +8,15 @@ contract DeploymentsTest is Test {
     using Deployments for Deployments.EnumerableDeployments;
 
     Deployments.EnumerableDeployments enumerableDeployments;
-    string[] skipSepolia = new string[](0);
     string[] skipMainnet = new string[](0);
+    string[] skipArbitrumMainnet = new string[](0);
 
     function test_MainnetDeployedAddressesMatch() public {
         _deployedAddressesMatch("mainnet", skipMainnet);
+    }
+
+    function test_ArbitrumMainnetDeployedAddressesMatch() public {
+        _deployedAddressesMatch("arbitrum-mainnet", skipArbitrumMainnet);
     }
 
     function _deployedAddressesMatch(string memory network, string[] memory skip) internal {

@@ -16,6 +16,10 @@ contract DeploymentsTest is Test {
         _contractInitializedProperly("mainnet", "1USD");
     }
 
+    function test_ArbitrumMainnetContractsInitializedProperly() public {
+        _contractInitializedProperly("arbitrum-mainnet", "1USD");
+    }
+
     function _contractInitializedProperly(string memory network, string memory configName) internal {
         vm.createSelectFork(network);
         enumerableDeployments.hydrate(network);
