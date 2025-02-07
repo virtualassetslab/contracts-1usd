@@ -4,13 +4,13 @@
   "deployment-name": "1USD_Stablecoin",
   "pools": [
     {
-      "limit": 20000,
-      "threshold": 10000,
+      "limit": 500000,
+      "threshold": 200000,
       "signatures": 0
     },
     {
-      "limit": 200000,
-      "threshold": 100000,
+      "limit": 2000000,
+      "threshold": 500000,
       "signatures": 1
     },
     {
@@ -31,7 +31,9 @@
       "0x80bA50157eEa3d33E179E7C50C1f3D59484B1790",
       "0x083B59F244f8BAcbc79282Cdd623686324C962AC",
       "0x960b1d99A841399fB226715d9eF8cCAfb9996bC8",
-      "0xFbF329794a64Bf940f7B3bdaFf4F2157ba23B3CC"
+      "0xFbF329794a64Bf940f7B3bdaFf4F2157ba23B3CC",
+      "0x937c8C2d78fd98E6C5488519B05a797ae1b9Eb40",
+      "0x330Aaf998c9D2Fe97D1ab86Da724daF2F4d032E7"
     ],
     "redemption_admin": [
       "0xb491aDC64216D4B48a4400c547f826389cB1b6F6"

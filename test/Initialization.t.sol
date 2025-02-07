@@ -13,15 +13,11 @@ contract DeploymentsTest is Test {
     Deployments.EnumerableDeployments enumerableDeployments;
 
     function test_MainnetContractsInitializedProperly() public {
-        _contractInitializedProperly("mainnet", "1USD", 19_975_530);
+        _contractInitializedProperly("mainnet", "1USD");
     }
 
-    function _contractInitializedProperly(
-        string memory network,
-        string memory configName,
-        uint256 _forkAtBlock
-    ) internal {
-        vm.createSelectFork(network, _forkAtBlock);
+    function _contractInitializedProperly(string memory network, string memory configName) internal {
+        vm.createSelectFork(network);
         enumerableDeployments.hydrate(network);
         string memory config = vm.readFile(_configFile(network, configName));
         string memory deploymentName = vm.parseJsonString(config, ".deployment-name");
@@ -88,6 +84,7 @@ contract DeploymentsTest is Test {
     }
 
     function _assertRole(address stablecoin, bytes32 role, address[] memory addresses) private {
+        assertEq(IStablecoin(stablecoin).getRoleMemberCount(role), addresses.length);
         for (uint256 i = 0; i < addresses.length; i++) {
             assertTrue(IStablecoin(stablecoin).hasRole(role, addresses[i]));
         }

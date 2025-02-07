@@ -15,5 +15,6 @@ interface IStablecoin {
     function symbol() external returns (string memory);
     function decimals() external view returns (uint256);
     function viewMintPool(PoolIndex poolIndex) external view returns (Count, uint256, uint256, uint256, Count, Count);
+    function getRoleMemberCount(bytes32 role) external returns (uint256);
     function hasRole(bytes32 role, address account) external returns (bool);
 }
