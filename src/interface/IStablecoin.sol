@@ -24,6 +24,7 @@ interface IStablecoin {
     function viewMinimumRedemptionAmount() external view returns (uint256);
     function getRoleAdmin(bytes32 role) external view returns (bytes32);
     function getRoleMemberCount(bytes32 role) external view returns (uint256);
+    function grantRole(bytes32 role, address account) external;
     function hasRole(bytes32 role, address account) external view returns (bool);
     function requestThenFinalizeMint(address account, uint256 amount, PoolIndex poolIndex) external;
 }

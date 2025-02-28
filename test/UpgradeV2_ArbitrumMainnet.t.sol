@@ -11,23 +11,23 @@ import {IStablecoin_v2} from "../src/interface/IStablecoin_v2.sol";
 
 import {UpgradeV2Test} from "./abstract/UpgradeV2.t.sol";
 
-contract UpgradeV2Test_Mainnet is UpgradeV2Test {
+contract UpgradeV2Test_ArbitrumMainnet is UpgradeV2Test {
     using Deployments for Deployments.EnumerableDeployments;
 
     function setUp() public {
         // TODO Fork just before the successful upgrade at this tx hash
-        vm.createSelectFork("mainnet");
-        enumerableDeployments.hydrate("mainnet");
+        vm.createSelectFork("arbitrum-mainnet");
+        enumerableDeployments.hydrate("arbitrum-mainnet");
 
-        // cannot use _get() - not deployed to mainnet yet
+        // cannot use _get() - not deployed to arbitrum-mainnet yet
         stablecoinV2Impl = new Stablecoin_v2();
 
         stablecoinV1Proxy = IStablecoin_v1(_get("1USD_Stablecoin"));
         stablecoinV2Proxy = IStablecoin_v2(address(stablecoinV1Proxy));
 
-        tokenName = "OneUSD Stablecoin";
+        tokenName = "1USD Stablecoin";
 
-        defaultAdmins = [0x16cEa306506c387713C70b9C1205fd5aC997E78E];
+        defaultAdmins = [0x5BafE071663F6E175F0b7424251aB46437Ba6abd];
         mintRatifiers = [
             0x0D55E17ca63ffF2715859528EddC54D0A7E91248,
             0x80bA50157eEa3d33E179E7C50C1f3D59484B1790,
@@ -37,11 +37,13 @@ contract UpgradeV2Test_Mainnet is UpgradeV2Test {
             0x937c8C2d78fd98E6C5488519B05a797ae1b9Eb40,
             0x330Aaf998c9D2Fe97D1ab86Da724daF2F4d032E7
         ];
-        pausers = [0xf0aE09d3ABdF3641e2eB4cD45cf56873296a02CB];
-        accountAdmins = [0xb491aDC64216D4B48a4400c547f826389cB1b6F6];
-        minters = [0x6a5f2d9d372D91D372dD4fD19171a04fB1FeB453];
+        pausers = [0x69ee6870571D71Af0eE26D8B0d4DdD6261fa8232];
+        accountAdmins = [0xE77747B356CD9Dbe6E465974919d6B91ff5ACCd2];
+        minters = [0xc9e8dd03F8288aBaf1EE4AB18646A7e42dd64Ce7];
 
-        redemptionAddresses = [0x0000000000000000000000000000000000003077];
+        redemptionAddresses = [address(0x000123)]; // Needs to be non-empty for testRedemption()
+        vm.startPrank(accountAdmins[0]);
+        stablecoinV1Proxy.grantRole(stablecoinV1Proxy.REDEMPTION_ADDRESS_ROLE(), redemptionAddresses[0]);
 
         frozens = new address[](0);
     }

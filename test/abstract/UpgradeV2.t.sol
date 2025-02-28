@@ -19,6 +19,8 @@ abstract contract UpgradeV2Test is Test {
     IStablecoin_v2 public stablecoinV2Proxy;
     Stablecoin_v2 public stablecoinV2Impl;
 
+    string public tokenName;
+
     address[] public defaultAdmins;
     address[] public accountAdmins;
     address[] public pausers;
@@ -30,7 +32,7 @@ abstract contract UpgradeV2Test is Test {
     function testUpgrade() public {
         assertEq(address(stablecoinV1Proxy), address(stablecoinV2Proxy));
 
-        assertEq(stablecoinV1Proxy.name(), "OneUSD Stablecoin");
+        assertEq(stablecoinV1Proxy.name(), tokenName);
         assertEq(stablecoinV1Proxy.symbol(), "1USD");
         assertEq(stablecoinV1Proxy.decimals(), 18);
         assertEq(stablecoinV1Proxy.viewMinimumRedemptionAmount(), 0);
@@ -38,7 +40,7 @@ abstract contract UpgradeV2Test is Test {
 
         upgrade();
 
-        assertEq(stablecoinV2Proxy.name(), "OneUSD Stablecoin");
+        assertEq(stablecoinV2Proxy.name(), tokenName);
         assertEq(stablecoinV2Proxy.symbol(), "1USD");
         assertEq(stablecoinV2Proxy.decimals(), 18);
         assertEq(stablecoinV2Proxy.viewMinimumRedemptionAmount(), 0);
