@@ -87,7 +87,7 @@ contract DeploymentsTest is Test {
         return string.concat(vm.projectRoot(), "/script/configs/", network, "/", name, ".json");
     }
 
-    function _assertRole(address stablecoin, bytes32 role, address[] memory addresses) private {
+    function _assertRole(address stablecoin, bytes32 role, address[] memory addresses) private view {
         assertEq(IStablecoin(stablecoin).getRoleMemberCount(role), addresses.length);
         for (uint256 i = 0; i < addresses.length; i++) {
             assertTrue(IStablecoin(stablecoin).hasRole(role, addresses[i]));

@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "forge build && pnpm build:base",
-    "build:base": "FOUNDRY_PROFILE=0_8_19_opt_20000 forge build",
+    "build:base": "FOUNDRY_PROFILE=0_8_19_opt_20000 forge build && FOUNDRY_PROFILE=0_8_19_opt_20000_v2 forge build",
     "clean": "forge clean",
     "script:deploy": "FOUNDRY_PROFILE=script forge script --sig \"run(string memory)\" script/01_Deployments.s.sol",
     "script:verify": "FOUNDRY_PROFILE=script forge script --ffi --sig \"run(string memory)\" script/02_Verification.s.sol",

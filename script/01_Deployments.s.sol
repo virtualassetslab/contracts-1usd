@@ -14,6 +14,7 @@ contract DeploymentsScript is Script {
         enumerableDeployments.hydrate(network);
 
         _getOrDeploy("Stablecoin", "Stablecoin", "0_8_19_opt_20000");
+        _getOrDeploy("Stablecoin_v2", "Stablecoin_v2", "0_8_19_opt_20000_v2");
     }
 
     function _getOrDeploy(string memory key, string memory contractName, string memory foundryProfile)
