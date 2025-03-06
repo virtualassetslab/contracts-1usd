@@ -11,8 +11,9 @@
     "script:initializeAndConfigure": "FOUNDRY_PROFILE=script forge script --sig \"run(string memory, string memory)\" script/04_InitializeAndConfigure.s.sol",
     "lint": "prettier --list-different --plugin=prettier-plugin-solidity '{src*,test*}/**/*.sol' && pnpm solhint 'src*/**/*.sol'",
     "lint:fix": "prettier --write --plugin=prettier-plugin-solidity '{src*,test*}/**/*.sol' && pnpm solhint --fix 'src*/**/*.sol'",
-    "test": "pnpm test:deploy",
+    "test": "pnpm test:deploy && pnpm test:upgrade_v2",
     "test:deploy": "FOUNDRY_PROFILE=test forge test -vv",
+    "test:upgrade_v2": "FOUNDRY_PROFILE=0_8_19_opt_20000_v2 forge test -vv",
     "slither": "slither ."
   },
   "keywords": [],

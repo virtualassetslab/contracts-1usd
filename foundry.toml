@@ -25,6 +25,10 @@ optimizer = true
 optimizer_runs = 20000
 
 [profile.0_8_19_opt_20000_v2]
+fs_permissions = [
+    {access = "read", path = "./deployments-arbitrum-mainnet.json"},
+    {access = "read", path = "./deployments-mainnet.json"},
+]
 src = "src_0_8_19_opt_20000_v2"
 script = "script_0_8_19_opt_20000_v2"
 test = "test_0_8_19_opt_20000_v2"
